@@ -71,7 +71,7 @@ public class Main {
                 oathkeys.put(k, v);
             }
         } catch (Exception e) {
-            System.out.println("No key has been founded, closing the program...");
+            System.out.println("No key has been found, closing the program...");
             System.exit(1);
         }
     }
@@ -147,7 +147,7 @@ class GalaBot extends TwitchBot {
         addQueueCommands();
         addGameCommands();
     }
-    
+
     @Override
     public void handleChatMessage(String user, String msg, String tags){
         super.handleChatMessage(user, msg, tags);
