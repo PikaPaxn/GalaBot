@@ -12,7 +12,7 @@ public enum SubTier {
         color = c;
     }
     
-    private final String ruta = "subday_";
+    private final String ruta = "../resources/subday_";
 
     public int    getMeses() { return tiempo; }
     public String getColor() { return color;  }

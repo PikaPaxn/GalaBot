@@ -32,8 +32,10 @@ public class Main {
     private static String _prefix;
     private static boolean[] _logs = new boolean[4];
 
-    public static void main(String[] args) {
+    private static HashMap<String, String> oathkeys = new HashMap<>();
 
+    public static void main(String[] args) {
+        loadOathKeys();
         handleArgs(args);
         System.out.println("Nombre: " + _nombre);
         System.out.println("Pass: " + _password);
@@ -59,9 +61,21 @@ public class Main {
         });
     }
 
-    // private static final String PASSWORD = "oauth:h61oupw7y45ej6na6t9k2329ylwuej\r\n";  // PenchoBot
-    // private static final String PASSWORD = "oauth:atyqeryxdeg8dnczwtme2hun0bbfzl\r\n";  // Paxncho
-    // private static final String PASSWORD = "oauth:rlp85ciwn6u2ctooc1ulrnztks3kc8\r\n";  // LaxyBot
+    private static void loadOathKeys(){
+        try {
+            Scanner sc = new Scanner(new File("../resources/oath.keys"));
+            while(sc.hasNextLine()){
+                String line = sc.nextLine();
+                String k = line.substring(0, line.indexOf("|"));
+                String v = line.substring(line.indexOf("|")+1) + "\r\n";
+                oathkeys.put(k, v);
+            }
+        } catch (Exception e) {
+            System.out.println("No key has been founded, closing the program...");
+            System.exit(1);
+        }
+    }
+
    
     //////////////////////////////
     //  ♡ ARGS ♡
@@ -78,7 +92,7 @@ public class Main {
         //////////////////////////////
         // ♡ DEFAULTS
         _nombre = "LaxyBot";
-        _password = "oauth:rlp85ciwn6u2ctooc1ulrnztks3kc8\r\n";
+        _password = oathkeys.get("laxybot");
         _channel = "galaxias";
         _prefix = "!!";
         _logs[0] = true;
@@ -98,11 +112,11 @@ public class Main {
                 case "p":   _prefix = args[i+1];     i++;        break;
                 case "u":
                     if (args[i+1].toLowerCase().equals("paxncho"))
-                        _password = "oauth:atyqeryxdeg8dnczwtme2hun0bbfzl\r\n";
+                        _password = oathkeys.get("paxncho");
                     else if (args[i+1].toLowerCase().equals("penchobot"))
-                        _password = "oauth:h61oupw7y45ej6na6t9k2329ylwuej\r\n";
+                        _password = oathkeys.get("penchobot");
                     else if (args[i+1].toLowerCase().equals("laxybot"))
-                        _password = "oauth:rlp85ciwn6u2ctooc1ulrnztks3kc8\r\n";
+                        _password = oathkeys.get("laxybot");
                     break;
             }
         }
@@ -133,13 +147,7 @@ class GalaBot extends TwitchBot {
         addQueueCommands();
         addGameCommands();
     }
-
-    //////////////////////////////
-    //  ♡ DEFAULT
-    private static final String PASSWORD = "oauth:8sy6if18uph4e5v7x8wy14x85b4tot\r\n";  // PenchoBot
-    public GalaBot() { this("PenchoBot", PASSWORD, "galaxias", "!!", new boolean[] {true, false, false, false}); }
-    //////////////////////////////
-
+    
     @Override
     public void handleChatMessage(String user, String msg, String tags){
         super.handleChatMessage(user, msg, tags);
