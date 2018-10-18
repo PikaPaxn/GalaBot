@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<BotCommands>
+    <Command>
+        <Id></Id>
+        <Response></Response>   
+        <Description></Description>
+    </Command>
+    <Command>
+        <Id></Id>
+        <Response></Response>   
+        <Description></Description>
+    </Command>
+</BotCommands>
