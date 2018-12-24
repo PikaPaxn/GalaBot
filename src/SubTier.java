@@ -1,5 +1,16 @@
+//////////////////////////////
+//      ♡ SubTier GalaBot ♡
+//  Autor:      Pencho
+//  Creado:     29-Agosto-2018
+//  Modificado: 24-Diciembre-2018
+//
+//  Este Enum funciona como una centralización de los datos que
+//  son necesarios para que la interacción de los subs funcione
+//  de la mejor manera posible.
+//////////////////////////////
 public enum SubTier {
-    NO_ALIEN     (-1,  ""),
+    NO_ALIEN     (-2,  ""),
+    FOLLOWER     (-1,  "follower"),
     ALIEN_GRIS   (0,  "gris"),
     ALIEN_VERDE  (3,  "verde"),
     ALIEN_DORADO (6,  "dorado"),

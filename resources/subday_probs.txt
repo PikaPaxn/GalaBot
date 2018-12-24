@@ -1,3 +1,12 @@
+SUBDAY_FOLLOWER (0 Meses - Especial Navidad)
+50 laxycoins para todos		x20	25.00%
+100 laxycoins para todos	x17	21.25%
+200 laxycoins para todos	x15	18.75%
+250 laxycoins			x10	12.50%
+500 laxycoins			x8	10.00%
+750 laxycoins			x6	 7.50%
+1000 laxycoins			x4	 5.00%
+
 SUBDAY_GRIS (1 Mes)             x80
 100 laxycoins para todos        x20    25.00%
 200 laxycoins para todos        x15    18.75%
