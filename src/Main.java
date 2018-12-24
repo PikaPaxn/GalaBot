@@ -304,6 +304,10 @@ class GalaBot extends TwitchBot {
                     repeticiones = 10;
                 }
 
+                if (repeticiones > 30){
+                    repeticiones = 30;
+                }
+
                 for (int i = 0; i < repeticiones; i++)
                     _msg += " galaaHype";
 
