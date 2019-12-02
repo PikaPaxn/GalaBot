@@ -1,0 +1,59 @@
+SUBDAY_FOLLOWER (0 Meses - Especial Navidad)
+50 laxycoins para todos		x20	25.00%
+100 laxycoins para todos	x17	21.25%
+200 laxycoins para todos	x15	18.75%
+250 laxycoins			x10	12.50%
+500 laxycoins			x8	10.00%
+750 laxycoins			x6	 7.50%
+1000 laxycoins			x4	 5.00%
+
+SUBDAY_GRIS (1 Mes)             x80
+100 laxycoins para todos        x20    25.00%
+200 laxycoins para todos        x15    18.75%
+500 laxycoins                   x10    12.50%
+750 laxycoins                   x8     10.00%
+1.000 laxycoins                 x6      7.50%
+1.500 laxycoins                 x5      6.25%
+2.000 laxycoins                 x4      5.00%
+2.500 laxycoins                 x4      5.00%
+3.000 laxycoins                 x4      5.00%
+3.500 laxycoins                 x3      3.75%
+1 Random Key de Steam           x1      1.25%
+
+SUBDAY_VERDE (3 Meses)          x80
+250 laxycoins para todos        x25     31.25%
+4.000 laxycoins                 x20     25.00%
+4.500 laxycoins                 x15     18.75%
+5.000 laxycoins                 x10     12.50%
+5.500 laxycoins                 x6       7.50%
+1 Random Key de Steam           x2       2.50%
+1 Random Key Premium de Steam   x1       1.25%
+Cajita Misteriosa               x1       1.25%
+
+SUBDAY_DORADO (6 Meses)         x80
+6.000 laxycoins                 x30     37.50%
+6.500 laxycoins                 x20     25.00%
+7.000 laxycoins                 x15     18.75%
+7.500 laxycoins                 x6       7.50%
+1 Random Key de Steam           x3       3.75%
+1 Random Key Premium de Steam   x2       2.50%
+Cajita Misteriosa               x2       2.50%
+Cofre Misterioso                x2       2.50%
+
+SUBDAY_MORADO (12 Meses)        x80
+8.000 laxycoins                 x20     25.00%
+8.500 laxycoins                 x16     20.00%
+9.000 laxycoins                 x14     17.50%
+9.500 laxycoins                 x12     15.00%
+10.000 laxycoins                x9      11.25%
+1 Random Key Premium de Steam   x5       6.25%
+Cajita Misteriosa               x3       3.75%
+Cofre Misterioso                x1       1.25%
+
+SUBDAY_ROJO (24 Meses)          x80
+15.000 laxycoins                x25     31.25%
+20.000 laxycoins                x20     25.00%
+25.000 laxycoins                x15     18.75%
+Sign                            x12     15.00%
+Cofre Misterioso                x4       5.00%
+1 Random Key Premium de Steam   x4       5.00%

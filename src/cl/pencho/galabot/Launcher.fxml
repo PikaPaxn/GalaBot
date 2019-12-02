@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="640.0" style="-fx-font-size: 22px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cl.pencho.galabot.LauncherController">
+   <top>
+      <HBox alignment="TOP_CENTER" prefHeight="80.0" prefWidth="200.0" spacing="50.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="80.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/galaaGasm.png" />
+               </image>
+            </ImageView>
+            <Label prefHeight="80.0" text="GalaBot">
+               <font>
+                  <Font name="System Bold Italic" size="48.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="80.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/galaaGG.png" />
+               </image>
+            </ImageView>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="50.0" right="50.0" top="10.0" />
+         </padding>
+      </HBox>
+   </top>
+   <bottom>
+      <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button defaultButton="true" mnemonicParsing="false" onAction="#conectar" text="Conectar" />
+            <Button mnemonicParsing="false" onAction="#reiniciar" text="Reiniciar" />
+            <Button cancelButton="true" mnemonicParsing="false" onAction="#desconectar" text="Desconectar" />
+         </children>
+         <padding>
+            <Insets bottom="50.0" left="50.0" right="50.0" top="10.0" />
+         </padding>
+      </HBox>
+   </bottom>
+   <center>
+      <HBox alignment="CENTER" prefHeight="20.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Estado: " />
+            <Label fx:id="laEstado" text="No conectado..." />
+         </children>
+      </HBox>
+   </center>
+</BorderPane>

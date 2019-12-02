@@ -1,0 +1,5 @@
+debug:
+java -Dfile.encoding=UTF-8 -jar GalaBot.jar -v -msg
+
+run:
+java -Dfile.encoding=UTF-8 -jar GalaBot.jar -v -cht

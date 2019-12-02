@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<BotCommandsList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Commands>
+		<Command>
+			<Id>This is an Id</Id>
+			<Response>This is an Response</Response>
+			<Description>This is an Description</Description>
+		</Command>
+		<Command>
+			<Id>So this is</Id>
+			<Response>So this is</Response>
+			<Description>So this is</Description>
+		</Command>
+	</Commands>
+</BotCommandsList>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<BotCommands xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Command>
+		<Id>start</Id>
+		<Response>¡Estoy listo para trabajar ♡! Usa $prefix help para saber más de mi.</Response>
+		<Description>Cuando se inicia el bot</Description>
+	</Command>
+	<Command>
+		<Id>exit</Id>
+		<Response>Gracias por llamarme, ¡nos vemos!</Response>
+		<Description>Cuando se cierra el bot</Description>
+	</Command>
+	<Command>
+		<Id>tempmod</Id>
+		<Response>Mod temporal $args ha sido agregado.</Response>
+		<Description>Cuando se añade un mod temporal</Description>
+	</Command>
+	<Command>
+		<Id>tempunmod1</Id>
+		<Response>Mod temporal $args eliminado.</Response>
+		<Description>Cuando se elimina un mod temporal</Description>
+	</Command>
+	<Command>
+		<Id>tempunmod2</Id>
+		<Response>Mod temporal $args nunca fue mod.</Response>
+		<Description>Cuando el usuario nunca fue mod</Description>
+	</Command>
+	<Command>
+		<Id>help</Id>
+		<Response>¡Hola $user\! Soy LaxyBot, un fiel sirviente del canal que fue programado por un ocioso con tiempo libre para poder ayudar con necesidades especificas del Stream. Mi prefijo actual es $prefix</Response>
+		<Description>Cuando llaman a help</Description>
+	</Command>
+	<Command>
+		<Id>kappa</Id>
+		<Response>Kappa</Response>
+		<Description>Kappa</Description>
+	</Command>
+	<Command>
+		<Id>mesa</Id>
+		<Response>(ノಠ益ಠ)ノ彡┻━┻</Response>
+		<Description>Cuando la gente se enoja (?) (comando)</Description>
+	</Command>
+	<Command>
+		<Id>pencho</Id>
+		<Response>Mi Dios creador, el mod más querido de todos los niños, el favorito de todos y aquel que siempre estará en sus corazones. (づ￣ ³￣)づ</Response>
+		<Description>Cuando preguntan por el creador ♡ (por comando)</Description>
+	</Command>
+	<Command>
+		<Id>pingu</Id>
+		<Response>bit.ly/pingubot</Response>
+		<Description>Pingu -&gt; Gif de Pingu</Description>
+	</Command>
+	<Command>
+		<Id>subday1</Id>
+		<Response>$user ¡El SubDay se ha Activado! Envia $prefix\join para unirte a la cola.</Response>
+		<Description>Cuando se activa el subday</Description>
+	</Command>
+	<Command>
+		<Id>subday2</Id>
+		<Response>$user ¡El SubDay ya se encontraba activado! Envia $prefix\join para unirte a la cola.</Response>
+		<Description>Cuando el subday ya estaba activado</Description>
+	</Command>
+	<Command>
+		<Id>exitsubday1</Id>
+		<Response>$user ¡El Subday se ha cerrado! Gracias a todos por participar ♡</Response>
+		<Description>Cuando se cierra el subday</Description>
+	</Command>
+</BotCommands>
