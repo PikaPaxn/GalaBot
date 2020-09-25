@@ -31,7 +31,7 @@ import cl.pencho.galabot.util.UserCategory;
 //    ♡ Deceit
 //////////////////////////////
 public class GalaBot extends TwitchBot {
-    private static String BOT_VERSION = "v1.2.1";
+    private static String BOT_VERSION = "v1.2.2";
     
     //////////////////////////////
     //  ♡ CONFIGURACIONES BASICAS
@@ -45,8 +45,8 @@ public class GalaBot extends TwitchBot {
         addStandardCommands();
         addTextCommands();
         addGalaAwardsCommands();
-        addQueueCommands();
-        addGameCommands();
+        //addQueueCommands();
+        //addGameCommands();
     }
 
     /**
@@ -508,7 +508,7 @@ public class GalaBot extends TwitchBot {
             @Override public void execute(String user, String msg, String tags) {
                 String _msg = "";
 
-                _msg += "Sigue a Gorilla Setups, la familia más lidna ---> www.instagram.com/gorilla.setups galaaQueen";
+                _msg += "Sigue a Gorilla Setups, la familia más linda ---> www.instagram.com/gorilla.setups galaaQueen";
 
                 sendToChat(_msg);
             }
@@ -780,6 +780,24 @@ public class GalaBot extends TwitchBot {
         });
 
         /**
+         * >maschistoso
+         * Muestra en el chat el ganador de la categoría "Más Chistoso"
+         */
+        commands.put(_prefix + "maschistoso", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GALA_AWARDS; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Muestra al ganador de \"Más Chistoso\"."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _mensaje = "";
+
+                _mensaje += "¡Ganador Categoría Más Chistoso!: ynfinitoqlo (2019) galaaDance";
+
+                sendToChat(_mensaje);
+            }
+        });
+
+        /**
          * >masotaku
          * Muestra en el chat el ganador en la categoría "Más Otaku"
          */
@@ -870,6 +888,24 @@ public class GalaBot extends TwitchBot {
         });
 
         /**
+         * >bestvip
+         * Muestra en el chat el ganador en la categoría "Mejor VIP"
+         */
+        commands.put(_prefix + "bestvip", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GALA_AWARDS; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Muestra al ganador de \"Mejor VIP\"."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _mensaje = "";
+
+                _mensaje += "¡Ganador Categoría Mejor VIP!: Luketiix (2019) galaaDance";
+
+                sendToChat(_mensaje);
+            }
+        });
+
+        /**
          * >bestsign
          * Muestra en el chat el ganador en la categoría "Mejor Sign"
          */
@@ -901,6 +937,114 @@ public class GalaBot extends TwitchBot {
 
                 //TODO: FALTA EL LINK
                 _mensaje += "¡Ganador Categoría Mejor Clip!: Me mataron a puro pico (2018) http://bit.ly/galaClip2018 Sacada de Chucha (2019) galaaGasm";
+
+                sendToChat(_mensaje);
+            }
+        });
+
+        /**
+         * >bestship
+         * Muestra en el chat los ganadores en la categoría "Mejor Ship"
+         */
+        commands.put(_prefix + "bestship", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GALA_AWARDS; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Muestra al ganador de la \"Mejor Ship\"."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _mensaje = "";
+
+                _mensaje += "¡Ganadores Categoría Mejor Ship!: Guonejo X Cits (2019) galaaPride";
+
+                sendToChat(_mensaje);
+            }
+        });
+
+        /**
+         * >bestimitador
+         * Muestra en el chat el ganador en la categoría "Mejor Imitador"
+         */
+        commands.put(_prefix + "bestimitador", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GALA_AWARDS; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Muestra al ganador de la \"Mejor Imitador\"."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _mensaje = "";
+
+                _mensaje += "¡Ganadores Categoría Mejor Imitador!: RoygSnake (2019) galaaGG";
+
+                sendToChat(_mensaje);
+            }
+        });
+
+        /**
+         * >bestcantante
+         * Muestra en el chat el ganador en la categoría "Mejor Cantante"
+         */
+        commands.put(_prefix + "bestcantante", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GALA_AWARDS; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Muestra al ganador de la \"Mejor Cantante\"."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _mensaje = "";
+
+                _mensaje += "¡Ganadores Categoría Mejor Cantante!: Marthin1010 (2019) galaaDance";
+
+                sendToChat(_mensaje);
+            }
+        });
+
+        /**
+         * >topct
+         * Muestra en el chat el ganador en la categoría "Top Donador Cuenta Rut"
+         */
+        commands.put(_prefix + "topct", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GALA_AWARDS; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Muestra al ganador de la \"Top Donador Cuenta Rut\"."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _mensaje = "";
+
+                _mensaje += "¡Ganadores Categoría Top Donador Cuenta Rut!: dskater88 (2019) galaaMoney";
+
+                sendToChat(_mensaje);
+            }
+        });
+
+        /**
+         * >toppaypal
+         * Muestra en el chat el ganador en la categoría "Top Donador PayPal"
+         */
+        commands.put(_prefix + "toppaypal", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GALA_AWARDS; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Muestra al ganador de la \"Top Donador PayPal\"."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _mensaje = "";
+
+                _mensaje += "¡Ganadores Categoría Top Donador PayPal!: dskater88 (2019) galaaMoney";
+
+                sendToChat(_mensaje);
+            }
+        });
+
+        /**
+         * >mayorsub
+         * Muestra en el chat el ganador en la categoría "Mayor Suscriptor"
+         */
+        commands.put(_prefix + "mayorsub", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GALA_AWARDS; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Muestra al ganador de la \"Mayor Suscriptor\"."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _mensaje = "";
+
+                _mensaje += "¡Ganadores Categoría Mayor Suscriptor!: iL_ReaveN_ (2019) galaaMoney";
 
                 sendToChat(_mensaje);
             }
