@@ -6,6 +6,7 @@ import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -15,7 +16,7 @@ import java.util.Scanner;
 //      ♡ Twitch Bot ♡
 //  Autor:      Pencho
 //  Creado:     08-Julio-2018
-//  Modificado: 29-Enero-2019
+//  Modificado: 25-Septiembre-2020
 //
 //  Contiene la configuración y los metodos necesarios
 //  para mantener al bot andando bien en los canales de Twitch.
@@ -51,6 +52,8 @@ public class TwitchBot {
     private LinkedList<String> outQueue = new LinkedList<>();
 
     private HashSet<String> _tempMods = new HashSet<>();
+    private ArrayList<String> _activeUsers = new ArrayList<>();
+    public ArrayList<String> getActiveUsers() { return this._activeUsers; }
 
     //////////////////////////////
     //  METHODS AND STUFF
@@ -92,7 +95,7 @@ public class TwitchBot {
         OutputThread.sendToSystem(this, writer, "USER " + _nickname + " 0 * " + _nickname);
         OutputThread.sendToSystem(this, writer, "CAP REQ :twitch.tv/tags");
         OutputThread.sendToSystem(this, writer, "CAP REQ :twitch.tv/commands");
-        // sendToSystem("CAP REQ :twitch.tv/membership");
+        OutputThread.sendToSystem(this, writer, "CAP REQ :twitch.tv/membership");
 
         _inputThread = new InputThread(this, reader, writer);
         //Check if we are connected
@@ -163,6 +166,18 @@ public class TwitchBot {
             if (_chatLog)
                 log("CHAT<<<" + user + ": " + msg);
             handleChatMessage(user, msg.toLowerCase(), tags);
+        }
+        
+        //Mantener Tracking de los usuarios conectados
+        if (line.contains("JOIN #" + _channel)) {
+            // Añadir usuario conectado
+            String user = line.substring(1, line.indexOf("!"));
+            _activeUsers.add(user);
+        }
+        if (line.contains("PART #" + _channel)) {
+            // Eliminar usuario conectado
+            String user = line.substring(1, line.indexOf("!"));
+            _activeUsers.remove(user);
         }
     }
 

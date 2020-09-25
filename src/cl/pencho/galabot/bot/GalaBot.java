@@ -31,7 +31,7 @@ import cl.pencho.galabot.util.UserCategory;
 //    ♡ Deceit
 //////////////////////////////
 public class GalaBot extends TwitchBot {
-    private static String BOT_VERSION = "v1.2.0";
+    private static String BOT_VERSION = "v1.2.1";
     
     //////////////////////////////
     //  ♡ CONFIGURACIONES BASICAS
@@ -43,6 +43,7 @@ public class GalaBot extends TwitchBot {
         super._prefix = prefix;
         System.out.println("Galabot Version: " + BOT_VERSION);
         addStandardCommands();
+        addTextCommands();
         addGalaAwardsCommands();
         addQueueCommands();
         addGameCommands();
@@ -226,6 +227,38 @@ public class GalaBot extends TwitchBot {
                 sendToChat(_msg);
             }
         });
+        
+        /**
+         * >sad
+         * Genera una cadena de sad en el chat
+         */
+        String sadCmd = "sad";
+        commands.put(_prefix + sadCmd, new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GENERAL; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Spammea galaaSad en el chat (Max 30)"; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _msg = "";
+                int repeticiones = -1;
+                try {
+                    Scanner sc = new Scanner(msg.substring(_prefix.length() + sadCmd.length()));
+                    repeticiones = sc.nextInt();
+                    sc.close();
+                } catch (Exception e) {
+                    repeticiones = 10;
+                }
+
+                if (repeticiones > 30){
+                    repeticiones = 30;
+                }
+
+                for (int i = 0; i < repeticiones; i++)
+                    _msg += " galaaSad";
+
+                sendToChat(_msg);
+            }
+        });
 
         /**
          * >actualmode
@@ -240,6 +273,450 @@ public class GalaBot extends TwitchBot {
                 String _msg = "";
 
                 _msg += "El juego actual es: " + betMode.toString() + " | La cola actual es: " + queueMode.toString() + " galaaGG";
+
+                sendToChat(_msg);
+            }
+        });
+    }
+    
+    //////////////////////////////
+    //      ♡ TEXT COMMANDS ♡
+    //  Estos comandos deberian moverse a un archivo aparte,
+    //  y dar la posibilidad de ser editados sin editar el
+    //  codigo del bot uwu.
+    //////////////////////////////
+    private int piscolas = 0;
+    private int awa = 0;
+    
+     /**
+     * Metodo que añade comandos de texto básicos.
+     */
+    private void addTextCommands(){
+        //////////////////////////////
+        //  ♡ PLATAFORMAS
+        //////////////////////////////
+        /**
+         * >blizzard
+         * Comando que muestra el nick de Galaxias en Blizzard
+         */
+        commands.put(_prefix + "blizzard", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GENERAL; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Nick en Blizzard."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _msg = "";
+
+                _msg += "Mi nick en Blizzard es Galaxias#1387 galaaGG";
+
+                sendToChat(_msg);
+            }
+        });
+        
+        /**
+         * >riotgames
+         * Comando que muestra el nick de Galaxias en Riot Games
+         */
+        commands.put(_prefix + "riotgames", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GENERAL; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Nick en Riot Games."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _msg = "";
+
+                _msg += "Mi nick en Riot Games es Galaxias #LAS galaaGG";
+
+                sendToChat(_msg);
+            }
+        });
+
+        /**
+         * >origin
+         * Comando que muestra el nick de Galaxias en Origin
+         */
+        commands.put(_prefix + "origin", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GENERAL; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Nick en Origin."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _msg = "";
+
+                _msg += "Mi nick en Origin es TwitchGalaxias galaaGG";
+
+                sendToChat(_msg);
+            }
+        });
+
+        /**
+         * >steam
+         * Comando que muestra el nick de Galaxias en Steam
+         */
+        commands.put(_prefix + "steam", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GENERAL; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Nick en Steam."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _msg = "";
+
+                _msg += "Mi nick en Steam es Galaxias galaaGG";
+
+                sendToChat(_msg);
+            }
+        });
+
+        /**
+         * >epicgames
+         * Comando que muestra el nick de Galaxias en Epic Games
+         */
+        commands.put(_prefix + "epicgames", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GENERAL; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Nick en Epic Games."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _msg = "";
+
+                _msg += "Mi nick en Epic Games es LCGalaxias galaaGG";
+
+                sendToChat(_msg);
+            }
+        });
+
+        //////////////////////////////
+        //  ♡ REDES SOCIALES
+        //////////////////////////////
+        /**
+         * >ig
+         * Comando que muestra el instagram de Galaxias
+         */
+        commands.put(_prefix + "ig", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GENERAL; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Instagram."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _msg = "";
+
+                _msg += "Sígueme en instagram ---> www.instagram.com/lcgalaxias galaaQueen";
+
+                sendToChat(_msg);
+            }
+        });
+
+        /**
+         * >twitter
+         * Comando que muestra el twitter de Galaxias
+         */
+        commands.put(_prefix + "twitter", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GENERAL; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Twitter."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _msg = "";
+
+                _msg += "Sígueme en twitter ---> www.twitter.com/lcgalaxias galaaQueen";
+
+                sendToChat(_msg);
+            }
+        });
+
+        /**
+         * >fb
+         * Comando que muestra la fanpage de Galaxias
+         */
+        commands.put(_prefix + "fb", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GENERAL; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Facebook."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _msg = "";
+
+                _msg += "Sigue la fanpage ---> www.facebook.com/lcgalaxias galaaQueen";
+
+                sendToChat(_msg);
+            }
+        });
+
+        /**
+         * >army
+         * Comando que muestra la army de Galaxias
+         */
+        commands.put(_prefix + "army", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GENERAL; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Galaxias Army."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _msg = "";
+
+                _msg += "Únete a la army más galáctica de todo el universo ---> www.facebook.com/groups/galaxiasarmy galaaQueen";
+
+                sendToChat(_msg);
+            }
+        });
+
+        /**
+         * >yt
+         * Comando que muestra el youtube de Galaxias
+         */
+        commands.put(_prefix + "yt", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GENERAL; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Youtube."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _msg = "";
+
+                _msg += "Sigue mi canal de youtube para ver mis videos más recientes ---> www.youtube.com/galaxias galaaQueen";
+
+                sendToChat(_msg);
+            }
+        });
+
+        /**
+         * >memelaxias
+         * Comando que muestra el instagram de memelaxias
+         */
+        commands.put(_prefix + "memelaxias", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GENERAL; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Memelaxias."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _msg = "";
+
+                _msg += "Sigue nuestra página de memes oficial ---> www.instagram.com/memelaxias galaaQueen";
+
+                sendToChat(_msg);
+            }
+        });
+
+        /**
+         * >gs
+         * Comando que muestra el mensaje de Gorilla Setups
+         */
+        commands.put(_prefix + "gs", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GENERAL; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Gorilla Setups."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _msg = "";
+
+                _msg += "Sigue a Gorilla Setups, la familia más lidna ---> www.instagram.com/gorilla.setups galaaQueen";
+
+                sendToChat(_msg);
+            }
+        });
+
+        //////////////////////////////
+        //  ♡ GENERAL
+        //////////////////////////////
+        /**
+         * >xd
+         * Comando que xd
+         */
+        commands.put(_prefix + "xd", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GENERAL; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "xd."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _msg = "";
+
+                _msg += "Equis dé no más po galaaKappa";
+
+                sendToChat(_msg);
+            }
+        });
+        
+        /**
+         * >beso
+         * Comando que da un beso a otro viewer
+         */
+        commands.put(_prefix + "beso", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GENERAL; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Da un beso a otro viewer."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _msg = "";
+                String _otroUser = getActiveUsers().get(rand.nextInt(getActiveUsers().size()));
+
+                _msg += user + " le ha dado un beso pride a " + _otroUser + " galaaPride";
+
+                sendToChat(_msg);
+            }
+        });
+
+        /**
+         * >guamazo
+         * Comando que le da un guamazo a otro viewer
+         */
+        commands.put(_prefix + "guamazo", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GENERAL; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Da un guamazo a otro viewer."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _msg = "";
+                String _otroUser = getActiveUsers().get(rand.nextInt(getActiveUsers().size()));
+
+                _msg += user + " le ha dado un guamazo a " + _otroUser + " galaaTilt";
+
+                sendToChat(_msg);
+            }
+        });
+
+        /**
+         * >besotriple
+         * Comando que da un beso triple a otros dos viewers
+         */
+        commands.put(_prefix + "besotriple", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GENERAL; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Da un beso triple a otros dos viewers."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _msg = "";
+                int user1 = rand.nextInt(getActiveUsers().size());
+                int user2 = user1;
+                while (user1 == user2){
+                    user2 = rand.nextInt(getActiveUsers().size());
+                }
+
+                _msg += user + " se ha dado un beso triple con " + getActiveUsers().get(user1) + " y " + getActiveUsers().get(user2) + " galaaGasm";
+
+                sendToChat(_msg);
+            }
+        });
+
+        /**
+         * >clip
+         * Comando que pide un clip
+         */
+        commands.put(_prefix + "clip", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GENERAL; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Pide un clip."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _msg = "";
+
+                _msg += "Clipeen eso galaaPog";
+
+                sendToChat(_msg);
+            }
+        });
+
+        /**
+         * >piscola
+         * Comando que cuenta las piscolas
+         */
+        commands.put(_prefix + "piscola", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GENERAL; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Shots de piscola."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _msg = "";
+                piscolas++;
+                _msg += "Galaxias se ha tomado " + piscolas + " shots de piscola galaaPisco";
+
+                sendToChat(_msg);
+            }
+        });
+
+        /**
+         * >agua
+         * Comando que cuenta los vasos de agua
+         */
+        commands.put(_prefix + "agua", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GENERAL; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Shots de agua."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _msg = "";
+                awa++;
+                _msg += "Galaxias se ha tomado " + awa + " sorbitos de agua galaaUWU";
+
+                sendToChat(_msg);
+            }
+        });
+
+        /**
+         * >gh
+         * Comando que corrige la House de Galita
+         */
+        commands.put(_prefix + "gh", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GENERAL; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Gorila, no Gaming."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _msg = "";
+
+                _msg += "Nonono, no es Gaming House, es Gorilla House galaaTilt";
+
+                sendToChat(_msg);
+            }
+        });
+
+        /**
+         * >uwu
+         * Comando que es simplemente uwu
+         */
+        commands.put(_prefix + "uwu", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GENERAL; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Simplemente uwu."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _msg = "";
+
+                _msg += "Simplemente momento uwu galaaUWU";
+
+                sendToChat(_msg);
+            }
+        });
+
+        /**
+         * >wsp
+         * Comando que da el whatsapp de la Galita
+         */
+        commands.put(_prefix + "wsp", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GENERAL; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Whatsapp."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _msg = "";
+
+                _msg += "galaaKappa";
+
+                sendToChat(_msg);
+            }
+        });
+
+        /**
+         * >elo
+         * Comando que muestra el elo actual
+         */
+        commands.put(_prefix + "elo", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GENERAL; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Elo."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _msg = "";
+
+                _msg += "Valorant ---> Oro 3 || League of Legends ---> Platino 4 galaaGG";
 
                 sendToChat(_msg);
             }
@@ -296,7 +773,7 @@ public class GalaBot extends TwitchBot {
             @Override public void execute(String user, String msg, String tags) {
                 String _mensaje = "";
 
-                _mensaje += "¡Ganador Categoría Más Amistoso!: Mileto (2018) galaaHi";
+                _mensaje += "¡Ganador Categoría Más Amistoso!: Mileto (2018), 4_Marichi (2019) galaaHi";
 
                 sendToChat(_mensaje);
             }
@@ -314,7 +791,7 @@ public class GalaBot extends TwitchBot {
             @Override public void execute(String user, String msg, String tags) {
                 String _mensaje = "";
 
-                _mensaje += "¡Ganador Categoría Más Otaku!: Bascu (2018) galaaGG";
+                _mensaje += "¡Ganador Categoría Más Otaku!: Bascu (2018), Madware1 (2019) galaaGG";
 
                 sendToChat(_mensaje);
             }
@@ -332,7 +809,7 @@ public class GalaBot extends TwitchBot {
             @Override public void execute(String user, String msg, String tags) {
                 String _mensaje = "";
 
-                _mensaje += "¡Ganador Categoría Más Pride!: Mileto (2018) galaaPride";
+                _mensaje += "¡Ganador Categoría Más Pride!: Mileto (2018), 4_marichi (2019) galaaPride";
 
                 sendToChat(_mensaje);
             }
@@ -350,7 +827,7 @@ public class GalaBot extends TwitchBot {
             @Override public void execute(String user, String msg, String tags) {
                 String _mensaje = "";
 
-                _mensaje += "¡Ganador Categoría Mejor Editor!: Xan (2018) galaaHype";
+                _mensaje += "¡Ganador Categoría Mejor Editor!: Xan (2018), 4_marichi (2019) galaaHype";
 
                 sendToChat(_mensaje);
             }
@@ -386,7 +863,7 @@ public class GalaBot extends TwitchBot {
             @Override public void execute(String user, String msg, String tags) {
                 String _mensaje = "";
 
-                _mensaje += "¡Ganador Categoría Mejor Moderador!: Dskater (2018) galaaDat";
+                _mensaje += "¡Ganador Categoría Mejor Moderador!: Dskater (2018), 4_marichi (2019) galaaUWU";
 
                 sendToChat(_mensaje);
             }
@@ -404,7 +881,7 @@ public class GalaBot extends TwitchBot {
             @Override public void execute(String user, String msg, String tags) {
                 String _mensaje = "";
 
-                _mensaje += "¡Ganador Categoría Mejor Sign!: Eevee (2018) http://bit.ly/galaSign2018 galaaKappa";
+                _mensaje += "¡Ganador Categoría Mejor Sign!: Eevee (2018) http://bit.ly/galaSign2018 Sasuke (2019) http://bit.ly/galaSign2019 galaaKappa";
 
                 sendToChat(_mensaje);
             }
@@ -423,7 +900,7 @@ public class GalaBot extends TwitchBot {
                 String _mensaje = "";
 
                 //TODO: FALTA EL LINK
-                _mensaje += "¡Ganador Categoría Mejor Clip!: Me mataron a puro pico (2018) galaaGasm";
+                _mensaje += "¡Ganador Categoría Mejor Clip!: Me mataron a puro pico (2018) http://bit.ly/galaClip2018 Sacada de Chucha (2019) galaaGasm";
 
                 sendToChat(_mensaje);
             }
@@ -519,7 +996,7 @@ public class GalaBot extends TwitchBot {
                     return;
 
                 String _mensaje = "";
-                _mensaje = "♡ Se ha seteado el modo a SubDay ♡ ¡Envíen " + _prefix + "join para unirse a la cola! galaaHype";
+                _mensaje = "Se ha seteado el modo a SubDay ¡Envíen " + _prefix + "join para unirse a la cola! galaaHype";
                 queueMode = BotMode.SUBDAY;
                 queueOpen = true;
 
@@ -541,7 +1018,7 @@ public class GalaBot extends TwitchBot {
                     return;
 
                 String _mensaje = "";
-                _mensaje = "♡ Se ha seteado el modo a Signs ♡ galaaKiss";
+                _mensaje = "Se ha seteado el modo a Signs galaaKiss";
                 queueMode = BotMode.SIGNS;
 
                 sendToChat(_mensaje);
@@ -562,7 +1039,7 @@ public class GalaBot extends TwitchBot {
                     return;
 
                 String _mensaje = "";
-                _mensaje = "♡ Se ha seteado el modo a Concursos ♡ ¡Envíen " + _prefix + "join para unirse a la cola! galaaHype";
+                _mensaje = "Se ha seteado el modo a Concursos ¡Envíen " + _prefix + "join para unirse a la cola! galaaHype";
                 queueMode = BotMode.CONCURSOS;
                 queueOpen = true;
 
@@ -584,7 +1061,7 @@ public class GalaBot extends TwitchBot {
                     return;
 
                 String _mensaje = "";
-                _mensaje = "♡ Se ha seteado el modo a Navidad ♡ ¡Envíen " + _prefix + "join para unirse a la cola! galaaHype";
+                _mensaje = "Se ha seteado el modo a Navidad ¡Envíen " + _prefix + "join para unirse a la cola! galaaHype";
                 queueMode = BotMode.NAVIDAD;
                 queueOpen = true;
 
@@ -611,10 +1088,10 @@ public class GalaBot extends TwitchBot {
                 
                 //Definir mensaje según caso
                 switch(queueMode){
-                    case SUBDAY:    _mensaje = "¡El SubDay se ha terminado! Gracias por participar ♡ galaaKiss"; break;
-                    case NAVIDAD:   _mensaje = "¡El evento de Navidad se ha terminado! Gracias por participar ♡ galaaKiss"; break;
-                    case SIGNS:     _mensaje = "¡Los Signs se han terminado! Gracias a todos quienes canjearon ♡ galaaKiss"; break;
-                    case CONCURSOS: _mensaje = "¡El Concurso se ha acabado! Gracias a todos los concursantes ♡ galaaKiss"; break;
+                    case SUBDAY:    _mensaje = "¡El SubDay se ha terminado! Gracias por participar galaaKiss"; break;
+                    case NAVIDAD:   _mensaje = "¡El evento de Navidad se ha terminado! Gracias por participar galaaKiss"; break;
+                    case SIGNS:     _mensaje = "¡Los Signs se han terminado! Gracias a todos quienes canjearon galaaKiss"; break;
+                    case CONCURSOS: _mensaje = "¡El Concurso se ha acabado! Gracias a todos los concursantes galaaKiss"; break;
                     default:        _mensaje = "No hay ninguna cola que terminar. (Are you drunk?) galaaWhat" ;
                 }
 
@@ -648,7 +1125,7 @@ public class GalaBot extends TwitchBot {
             
                 //Definir mensaje según caso
                 if (isOnQueue()){
-                    _mensaje = "¡La cola se ha cerrado! Sigan sintonizando para ver como le va a los restantes ♡ galaaGG";
+                    _mensaje = "¡La cola se ha cerrado! Sigan sintonizando para ver como le va a los restantes galaaGG";
                     queueOpen = false;
                 } else {
                     _mensaje = "No hay ninguna cola que cerrar. (Are you drunk?) galaaWhat";
@@ -757,14 +1234,14 @@ public class GalaBot extends TwitchBot {
                         int _count = Integer.parseInt(next.substring(next.lastIndexOf("@") + 1));
                         next = next.substring(0, next.lastIndexOf("@"));
                         actualTier = SubTier.getTier(_count);
-                        _mensaje = "¡ @" + next + " eres un alien " + actualTier.getColor() + " ! Por favor usa " + _prefix + "spin para girar tu ruleta galáctica correspondiente ♡ galaaKiss";
+                        _mensaje = "¡ @" + next + " eres un alien " + actualTier.getColor() + " ! Por favor usa " + _prefix + "spin para girar tu ruleta galáctica correspondiente galaaKiss";
 
                     //NAVIDAD
                     } else if (queueMode == BotMode.NAVIDAD) {
                         int _count = Integer.parseInt(next.substring(next.lastIndexOf("@") + 1));
                         next = next.substring(0, next.lastIndexOf("@"));                        
                         actualTier = SubTier.getTier(_count);
-                        _mensaje = "¡ @" + next + " es tu turno! Por favor usa " + _prefix + "spin para girar tu ruleta navideña correspondiente ♡ galaaKiss";
+                        _mensaje = "¡ @" + next + " es tu turno! Por favor usa " + _prefix + "spin para girar tu ruleta navideña correspondiente galaaKiss";
 
                     //OTRO MODO
                     } else {
@@ -848,9 +1325,9 @@ public class GalaBot extends TwitchBot {
                         actualUser = next;
 
                         if (queueMode == BotMode.SUBDAY){
-                            _mensaje +=  "@" + next + ". Por favor usa " + _prefix + "spin para girar tu ruleta galáctica correspondiente ♡ galaaKiss";
+                            _mensaje +=  "@" + next + ". Por favor usa " + _prefix + "spin para girar tu ruleta galáctica correspondiente galaaKiss";
                         } else if (queueMode == BotMode.NAVIDAD) {
-                            _mensaje +=  "@" + next + ". Por favor usa " + _prefix + "spin para girar tu ruleta navideña correspondiente ♡ galaaKiss";
+                            _mensaje +=  "@" + next + ". Por favor usa " + _prefix + "spin para girar tu ruleta navideña correspondiente galaaKiss";
                         } else {
                             _mensaje += "@" + next + " galaaKiss";
                         }
@@ -906,7 +1383,7 @@ public class GalaBot extends TwitchBot {
                     case NAVIDAD:
                         break;
                     case SIGNS:
-                        _mensaje = "Por favor pidele a un Mod que te añada a la cola ♡ galaaKiss";
+                        _mensaje = "Por favor pidele a un Mod que te añada a la cola galaaKiss";
                         sendToChat(_mensaje);
                         return;
                     default: return;
@@ -1111,9 +1588,9 @@ public class GalaBot extends TwitchBot {
                 String _mensaje = "";
 
                 if (running) {
-                    _mensaje = "Hay una apuesta en curso, por favor terminala antes de cambiar de modo ♡ galaaGG";
+                    _mensaje = "Hay una apuesta en curso, por favor terminala antes de cambiar de modo galaaGG";
                 } else {
-                    _mensaje = user + " se ha seteado el modo a Carrete ♡ galaaGasm";
+                    _mensaje = user + " se ha seteado el modo a Carrete galaaGasm";
                     betMode = BotMode.CARRETE;
                 }
 
@@ -1322,7 +1799,7 @@ public class GalaBot extends TwitchBot {
                     return;
 
                 if (!isOnGame()) {
-                    sendToChat("¡No hay ningún juego setteado!. Por favor usa " + _prefix + "lol, " + _prefix + "fortnite, o " + _prefix + "deceit antes de iniciar la votación ♡ galaaKiss");
+                    sendToChat("¡No hay ningún juego setteado!. Por favor usa " + _prefix + "lol, " + _prefix + "fortnite, o " + _prefix + "deceit antes de iniciar la votación galaaKiss");
                     return;
                 }
 
@@ -1340,14 +1817,14 @@ public class GalaBot extends TwitchBot {
                 String _mensaje = "";
 
                 if (laxys != -1)
-                    _mensaje = "♡ ¡Por " + laxys + " laxycoins! ";
+                    _mensaje = "¡Por " + laxys + " laxycoins! ";
 
                 if (!betting)
                     _mensaje += "¡Las apuestas se han activado!";
                 else
                     _mensaje += "¡Las apuestas ya se encontraban activadas!";
                 
-                _mensaje += " ♡ ¡Envia " + _prefix + "vote ";
+                _mensaje += " ¡Envia " + _prefix + "vote ";
 
                 if (betMode == BotMode.FORTNITE)
                     _mensaje += "<lugar>";
@@ -1356,7 +1833,7 @@ public class GalaBot extends TwitchBot {
                 else if (betMode == BotMode.DECEIT)
                     _mensaje += "<win|lose>";
 
-                _mensaje += " para apostar! ♡ ¡Que comience el juego ♡! galaaHype";
+                _mensaje += " para apostar! ¡Que comience el juego! galaaHype";
                 
                 sendToChat(_mensaje);
 
@@ -1417,7 +1894,7 @@ public class GalaBot extends TwitchBot {
                 votesReady.clear();
                 votes.clear();
 
-                String _mensaje = user + " ¡Apuestas reiniciadas! ¡Por " + laxycoins + " laxycoins! ♡ ¡Envia " + _prefix + "vote ";
+                String _mensaje = user + " ¡Apuestas reiniciadas! ¡Por " + laxycoins + " laxycoins! ¡Envia " + _prefix + "vote ";
                 
                 if (betMode == BotMode.FORTNITE)
                     _mensaje += "<lugar>";
@@ -1426,7 +1903,7 @@ public class GalaBot extends TwitchBot {
                 else if (betMode == BotMode.DECEIT)
                     _mensaje += "<win|lose>";
 
-                _mensaje += " para apostar! ♡ galaaHype";
+                _mensaje += " para apostar! galaaHype";
                 sendToChat(_mensaje);
                 betting = true;
             }
@@ -1486,7 +1963,7 @@ public class GalaBot extends TwitchBot {
                     }
                     _mensaje += "por haber acertado el concurso. ";
                     if (laxycoins != -1);
-                        _mensaje += "¡Se " + ((winners.size() > 1) ? "reparten " : "ganó ") + laxycoins + " laxycoins! ♡ ";
+                        _mensaje += "¡Se " + ((winners.size() > 1) ? "reparten " : "ganó ") + laxycoins + " laxycoins! ";
                     _mensaje += "Sigan disfrutando del Stream galaaGG";
                     sendToChat(_mensaje);
                 } else {
@@ -1522,9 +1999,9 @@ public class GalaBot extends TwitchBot {
                         for (int i = 0; i < ganadores.size(); i++){
                             _winners += ganadores.get(i) + ((i+1 != ganadores.size()) ? ", " : ". ");
                         }
-                        sendToChat("¡Oops! Nadie ha salido ganador esta vez. " + _winners + ((laxycoins != -1) ? (" Se perdieron " + laxycoins + " laxycoins galaaSad")  : "") + " ¡Mayor suerte para la próxima ♡!");
+                        sendToChat("¡Oops! Nadie ha salido ganador esta vez. " + _winners + ((laxycoins != -1) ? (" Se perdieron " + laxycoins + " laxycoins galaaSad")  : "") + " ¡Mayor suerte para la próxima!");
                     } else
-                        sendToChat("¡Oops! Nadie ha salido ganador esta vez." + ((laxycoins != -1) ? (" Se perdieron " + laxycoins + " laxycoins galaaSad")  : "") + " ¡Mayor suerte para la próxima ♡!");
+                        sendToChat("¡Oops! Nadie ha salido ganador esta vez." + ((laxycoins != -1) ? (" Se perdieron " + laxycoins + " laxycoins galaaSad")  : "") + " ¡Mayor suerte para la próxima!");
                 }
                 
                 running = false;
@@ -1683,7 +2160,7 @@ public class GalaBot extends TwitchBot {
                 }
 
                 if (_contador != 0)
-                    sendToChat("¡" + user + " queda" + ((_contador > 1) ? ("n " + _contador + " viewers") : (" " + _contador + " viewer")) + " participando ♡ galaaGG!");
+                    sendToChat("¡" + user + " queda" + ((_contador > 1) ? ("n " + _contador + " viewers") : (" " + _contador + " viewer")) + " participando galaaGG!");
                 else
                     sendToChat("Ya nadie queda en juego galaaSad");
             }
@@ -1736,13 +2213,13 @@ public class GalaBot extends TwitchBot {
                 String _msg = "¡" + maxbet + " es la votación más alta!, y ";
                 
                 if (list.size() == 1){
-                    _msg += list.get(0) + " votó por ella ♡ galaaGG";
+                    _msg += list.get(0) + " votó por ella galaaGG";
                 } else {
                     for (String u : list){
                         _msg += u + ", ";
                     }
                     
-                    _msg = _msg.substring(0, _msg.length() - 2) + " votaron por ella ♡ galaaGG";
+                    _msg = _msg.substring(0, _msg.length() - 2) + " votaron por ella galaaGG";
                 }
                     
                 sendToChat(_msg);

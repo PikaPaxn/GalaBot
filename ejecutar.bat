@@ -1,1 +1,1 @@
-java -Dfile.encoding=UTF-8 -jar GalaBot.jar -v -msg
+java -Dfile.encoding=UTF-8 -jar GalaBot.jar -v -cht

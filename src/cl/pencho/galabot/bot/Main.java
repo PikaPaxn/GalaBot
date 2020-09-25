@@ -117,7 +117,7 @@ public class Main {
         _nombre = "LaxyBot";
         _password = oathkeys.get("laxybot");
         _channel = "galaxias";
-        _prefix = "!!";
+        _prefix = "!";
         _logs[0] = true;
         _logs[1] = false;
         _logs[2] = false;
