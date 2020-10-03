@@ -10,6 +10,12 @@ import java.util.Random;
 import java.util.Scanner;
 import cl.pencho.galabot.util.ICommand;
 import cl.pencho.galabot.util.UserCategory;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 //////////////////////////////
 //      ♡ GalaBot ♡
@@ -31,7 +37,7 @@ import cl.pencho.galabot.util.UserCategory;
 //    ♡ Deceit
 //////////////////////////////
 public class GalaBot extends TwitchBot {
-    private static String BOT_VERSION = "v1.2.2";
+    private static String BOT_VERSION = "v1.2.3";
     
     //////////////////////////////
     //  ♡ CONFIGURACIONES BASICAS
@@ -277,6 +283,190 @@ public class GalaBot extends TwitchBot {
                 sendToChat(_msg);
             }
         });
+
+        /**
+         * >followage
+         * Comando que muestra cuanto tiempo ha estado siguiendo el usuario a Galaxias.
+         */
+        commands.put(_prefix + "followage", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GENERAL; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Muestra el tiempo que lleva siguiendo a Galaxias."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _msg = "";
+
+                //Try to get from a certain api
+                try {
+                    String curl = "https://2g.be/twitch/following.php?user=" + user + "&channel=" + getChannel() + "&format=mwdhms";
+
+                    URLConnection url = new URL(curl).openConnection();
+                    url.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
+                    try (BufferedReader reader = new BufferedReader(new InputStreamReader(url.getInputStream(), "UTF-8"))) {
+                        _msg += user + " sigue a Galaxias hace ";
+                        
+                        for (String line; (line = reader.readLine()) != null;) {
+                            
+                            //Transformar la linea de ingles a un texto entendible en español.
+                            int yearsIdx = line.indexOf("year");
+                            int monthIdx = line.indexOf("month");
+                            int weeksIdx = line.indexOf("week");
+                            int daysIdx = line.indexOf("day");
+                            String temp = "";
+                            boolean hasWord = false;
+                            int number;
+                            
+                            if (yearsIdx != -1) {
+                                temp = line.substring(0, yearsIdx - 1);
+                                number = Integer.parseInt(temp.substring(temp.lastIndexOf(" ") + 1));
+                                if (number > 1)
+                                    _msg += number + " años";
+                                else
+                                    _msg += number + " año";
+                                hasWord = true;
+                            }
+                            
+                            if (monthIdx != -1) {
+                                temp = line.substring(0, monthIdx - 1);
+                                if (hasWord)
+                                    _msg += ", ";
+                                number = Integer.parseInt(temp.substring(temp.lastIndexOf(" ") + 1));
+                                if (number > 1)
+                                    _msg += number + " meses";
+                                else
+                                    _msg += number + " mes";
+                                hasWord = true;
+                            }
+                            
+                            if (weeksIdx != -1) {
+                                temp = line.substring(0, weeksIdx - 1);
+                                if (hasWord)
+                                    _msg += ", ";
+                                number = Integer.parseInt(temp.substring(temp.lastIndexOf(" ") + 1));
+                                if (number > 1)
+                                    _msg += number + " semanas";
+                                else
+                                    _msg += number + " semana";
+                                hasWord = true;
+                            }
+                            
+                            if (daysIdx != -1) {
+                                temp = line.substring(0, daysIdx - 1);
+                                if (hasWord)
+                                    _msg += ", ";
+                                number = Integer.parseInt(temp.substring(temp.lastIndexOf(" ") + 1));
+                                if (number > 1)
+                                    _msg += number + " días";
+                                else
+                                    _msg += number + " día";
+                                hasWord = true;
+                            }
+                        }
+                        
+                        _msg += " galaaPog";
+                    }
+                } catch (Exception ex) {
+                    log("No se pudo conseguir la conexión");
+                    _msg = "Servicio no disponible temporalmente galaaSad";
+                }
+
+                sendToChat(_msg);
+            }
+        });
+
+        /**
+         * >uptime
+         * Comando que muestra cuanto tiempo ha estado stremeando Galaxias.
+         */
+        commands.put(_prefix + "uptime", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GENERAL; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Muestra el tiempo que lleva stremeando Galaxias."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _msg = "";
+
+                //Try to get from a certain api
+                try {
+                    String curl = "http://www.decapi.me/twitch/uptime.php?channel=" + getChannel();
+
+                    URLConnection url = new URL(curl).openConnection();
+                    url.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
+                    try (BufferedReader reader = new BufferedReader(new InputStreamReader(url.getInputStream(), "UTF-8"))) {
+                        _msg += "Galaxias lleva stremeando ";
+                        
+                        for (String line; (line = reader.readLine()) != null;) {
+                            
+                            //Transformar la linea de ingles a un texto entendible en español.
+                            int daysIdx = line.indexOf("day");
+                            int hourIdx = line.indexOf("hour");
+                            int minuteIdx = line.indexOf("minute");
+                            int secondIdx = line.indexOf("second");
+                            String temp = "";
+                            boolean hasWord = false;
+                            int number;
+                            
+                            line = " " + line;
+                            
+                            if (daysIdx != -1) {
+                                temp = line.substring(0, daysIdx - 1);
+                                if (hasWord)
+                                    _msg += ", ";
+                                number = Integer.parseInt(temp.substring(temp.lastIndexOf(" ") + 1));
+                                if (number > 1)
+                                    _msg += number + " días";
+                                else
+                                    _msg += number + " día";
+                                hasWord = true;
+                            }
+                            
+                            if (hourIdx != -1) {
+                                temp = line.substring(0, hourIdx - 1);
+                                if (hasWord)
+                                    _msg += ", ";
+                                number = Integer.parseInt(temp.substring(temp.lastIndexOf(" ") + 1));
+                                if (number > 1)
+                                    _msg += number + " horas";
+                                else
+                                    _msg += number + " hora";
+                                hasWord = true;
+                            }
+                            
+                            if (minuteIdx != -1) {
+                                temp = line.substring(0, minuteIdx - 1);
+                                if (hasWord)
+                                    _msg += ", ";
+                                number = Integer.parseInt(temp.substring(temp.lastIndexOf(" ") + 1));
+                                if (number > 1)
+                                    _msg += number + " minutos";
+                                else
+                                    _msg += number + " minuto";
+                                hasWord = true;
+                            }
+                            
+                            if (secondIdx != -1) {
+                                temp = line.substring(0, secondIdx - 1);
+                                if (hasWord)
+                                    _msg += ", ";
+                                number = Integer.parseInt(temp.substring(temp.lastIndexOf(" ") + 1));
+                                if (number > 1)
+                                    _msg += number + " segundos";
+                                else
+                                    _msg += number + " segundo";
+                                hasWord = true;
+                            }
+                        }
+                        
+                        _msg += " galaaGG";
+                    }
+                } catch (Exception ex) {
+                    log("No se pudo conseguir la conexión");
+                    _msg = "Servicio no disponible temporalmente galaaSad";
+                }
+
+                sendToChat(_msg);
+            }
+        });
     }
     
     //////////////////////////////
@@ -473,6 +663,24 @@ public class GalaBot extends TwitchBot {
                 String _msg = "";
 
                 _msg += "Sigue mi canal de youtube para ver mis videos más recientes ---> www.youtube.com/galaxias galaaQueen";
+
+                sendToChat(_msg);
+            }
+        });
+        
+        /**
+         * >discord
+         * Comando que muestra el discord de Galaxias
+         */
+        commands.put(_prefix + "dc", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GENERAL; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Discord."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _msg = "";
+
+                _msg += "Únete a nuestro canal de discord ---> https://discord.gg/RPPmX4t galaaQueen";
 
                 sendToChat(_msg);
             }
@@ -717,6 +925,42 @@ public class GalaBot extends TwitchBot {
                 String _msg = "";
 
                 _msg += "Valorant ---> Oro 3 || League of Legends ---> Platino 4 galaaGG";
+
+                sendToChat(_msg);
+            }
+        });
+        
+        /**
+         * >pc
+         * Comando que muestra las especificaciones del pc de la gala
+         */
+        commands.put(_prefix + "pc", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GENERAL; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Pc Specs."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _msg = "";
+
+                _msg += "Procesador: R7 3700X || RAM: 32GB 3600Mhz GEiL RGB || Tarjeta de video: ROG-STRIX RTX2070S || Motherboard: X570 AORUS ELITE Wi-Fi galaaQueen";
+
+                sendToChat(_msg);
+            }
+        });
+        
+        /**
+         * >alargar
+         * Comando que muestra las indicaciones para alargar el stream.
+         */
+        commands.put(_prefix + "alargar", new ICommand(){
+            @Override public CmdCategory getCategory() { return CmdCategory.GENERAL; }
+            @Override public UserCategory getUser() { return UserCategory.USER; }
+            @Override public String getDescripcion() { return "Alargar Stream."; }
+            
+            @Override public void execute(String user, String msg, String tags) {
+                String _msg = "";
+
+                _msg += "Si quieres alargar el stream, puedes contribuir donando: 1 USD = +3 min || 100 bits = +3 min || Sub Tier 1: +8 min || Sub Tier 2: +20 min || Sub Tier 3: +30 min || Muchas gracias por apoyar el stream galaaMoney";
 
                 sendToChat(_msg);
             }
