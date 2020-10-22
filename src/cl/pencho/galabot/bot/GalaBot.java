@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 //      ♡ GalaBot ♡
 //  Autor:      Pencho
 //  Creado:     08-Julio-2018
-//  Modificado: 31-Diciembre-2018
+//  Modificado: 22-Octubre-2020
 //  Bot dedicado especificamente al stream
 //  de Galaxias, configurado para ello y todas sus necesidades ♡
 //
@@ -37,7 +37,7 @@ import java.util.logging.Logger;
 //    ♡ Deceit
 //////////////////////////////
 public class GalaBot extends TwitchBot {
-    private static String BOT_VERSION = "v1.2.3";
+    private static String BOT_VERSION = "v1.2.4";
     
     //////////////////////////////
     //  ♡ CONFIGURACIONES BASICAS
@@ -366,7 +366,7 @@ public class GalaBot extends TwitchBot {
                         _msg += " galaaPog";
                     }
                 } catch (Exception ex) {
-                    log("No se pudo conseguir la conexión");
+                    log("No se pudo conseguir la conexión. " + ex.getMessage());
                     _msg = "Servicio no disponible temporalmente galaaSad";
                 }
 
@@ -460,7 +460,7 @@ public class GalaBot extends TwitchBot {
                         _msg += " galaaGG";
                     }
                 } catch (Exception ex) {
-                    log("No se pudo conseguir la conexión");
+                    log("No se pudo conseguir la conexión. " + ex.getMessage());
                     _msg = "Servicio no disponible temporalmente galaaSad";
                 }
 
@@ -754,9 +754,13 @@ public class GalaBot extends TwitchBot {
             
             @Override public void execute(String user, String msg, String tags) {
                 String _msg = "";
-                String _otroUser = getActiveUsers().get(rand.nextInt(getActiveUsers().size()));
 
-                _msg += user + " le ha dado un beso pride a " + _otroUser + " galaaPride";
+                if (getActiveUsers().size() < 2) {
+                    _msg = "Comando no disponible temporalmente. galaaSad";
+                } else {
+                    String _otroUser = getActiveUsers().get(rand.nextInt(getActiveUsers().size()));
+                    _msg += user + " le ha dado un beso pride a " + _otroUser + " galaaPride";
+                }
 
                 sendToChat(_msg);
             }
@@ -773,9 +777,13 @@ public class GalaBot extends TwitchBot {
             
             @Override public void execute(String user, String msg, String tags) {
                 String _msg = "";
-                String _otroUser = getActiveUsers().get(rand.nextInt(getActiveUsers().size()));
-
-                _msg += user + " le ha dado un guamazo a " + _otroUser + " galaaTilt";
+                
+                if (getActiveUsers().size() < 2) {
+                    _msg = "Comando no disponible temporalmente. galaaSad";
+                } else {
+                    String _otroUser = getActiveUsers().get(rand.nextInt(getActiveUsers().size()));
+                    _msg += user + " le ha dado un guamazo a " + _otroUser + " galaaTilt";
+                }
 
                 sendToChat(_msg);
             }
@@ -792,13 +800,18 @@ public class GalaBot extends TwitchBot {
             
             @Override public void execute(String user, String msg, String tags) {
                 String _msg = "";
-                int user1 = rand.nextInt(getActiveUsers().size());
-                int user2 = user1;
-                while (user1 == user2){
-                    user2 = rand.nextInt(getActiveUsers().size());
-                }
+                
+                if (getActiveUsers().size() < 3) {
+                    _msg = "Comando no disponible temporalmente. galaaSad";
+                } else {
+                    int user1 = rand.nextInt(getActiveUsers().size());
+                    int user2 = user1;
+                    while (user1 == user2){
+                        user2 = rand.nextInt(getActiveUsers().size());
+                    }
 
-                _msg += user + " se ha dado un beso triple con " + getActiveUsers().get(user1) + " y " + getActiveUsers().get(user2) + " galaaGasm";
+                    _msg += user + " se ha dado un beso triple con " + getActiveUsers().get(user1) + " y " + getActiveUsers().get(user2) + " galaaGasm";
+                }
 
                 sendToChat(_msg);
             }
@@ -924,7 +937,7 @@ public class GalaBot extends TwitchBot {
             @Override public void execute(String user, String msg, String tags) {
                 String _msg = "";
 
-                _msg += "Valorant ---> Oro 3 || League of Legends ---> Platino 4 galaaGG";
+                _msg += "Valorant ---> Platino 1 || League of Legends ---> Platino 4 galaaGG";
 
                 sendToChat(_msg);
             }
